@@ -51,6 +51,7 @@
             name="whatsapp"
             class="form-input"
             placeholder="(00) 00000-0000"
+            pattern="^\(\d{2}\) \d{5}-\d{4}$"
             required
             autocomplete="tel"
           />
@@ -89,6 +90,57 @@
   const successEl = document.getElementById('form-success') as HTMLElement;
   const errorEl = document.getElementById('form-error') as HTMLElement;
 
+  // WhatsApp mask
+  const whatsappInput = document.getElementById('whatsapp') as HTMLInputElement;
+  if (whatsappInput) {
+    whatsappInput.addEventListener('input', () => {
+      let v = whatsappInput.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length > 6) {
+        whatsappInput.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+      } else if (v.length > 2) {
+        whatsappInput.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+      } else if (v.length > 0) {
+        whatsappInput.value = `(${v}`;
+      }
+    });
+  }
+
+  // Custom pt-BR validation messages
+  const nomeInput = document.getElementById('nome') as HTMLInputElement;
+  const emailInput = document.getElementById('email') as HTMLInputElement;
+
+  const messages: Record<string, Record<string, string>> = {
+    nome: {
+      valueMissing: 'Informe seu nome completo.',
+    },
+    email: {
+      valueMissing: 'Informe seu e-mail.',
+      typeMismatch: 'Informe um e-mail válido.',
+    },
+    whatsapp: {
+      valueMissing: 'Informe seu WhatsApp.',
+      patternMismatch: 'Informe um número com DDD, exemplo: (19) 99999-9999.',
+    },
+  };
+
+  [nomeInput, emailInput, whatsappInput].forEach((input) => {
+    if (!input) return;
+    const msgs = messages[input.name];
+    input.addEventListener('invalid', (e) => {
+      e.preventDefault();
+      const validity = input.validity;
+      if (msgs) {
+        if (validity.valueMissing) input.setCustomValidity(msgs.valueMissing);
+        else if (validity.typeMismatch && msgs.typeMismatch) input.setCustomValidity(msgs.typeMismatch);
+        else if (validity.patternMismatch && msgs.patternMismatch) input.setCustomValidity(msgs.patternMismatch);
+      }
+      input.reportValidity();
+    });
+    input.addEventListener('input', () => {
+      input.setCustomValidity('');
+    });
+  });
+
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -96,7 +148,6 @@
       errorEl.hidden = true;
 
       if (!form.checkValidity()) {
-        form.reportValidity();
         return;
       }
 
