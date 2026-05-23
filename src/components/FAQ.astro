@@ -1,0 +1,96 @@
+---
+const faqs = [
+  {
+    q: 'Preciso de algum material ou conhecimento pr&eacute;vio?',
+    a: 'N&atilde;o. As aulas s&atilde;o acess&iacute;veis para qualquer pessoa que deseje entender os dons espirituais. Basta ter vontade de aprender e uma B&iacute;blia.',
+  },
+  {
+    q: 'E se eu n&atilde;o puder assistir ao vivo?',
+    a: 'Toda aula &eacute; gravada. Voc&ecirc; recebe o link da grava&ccedil;&atilde;o e assiste no hor&aacute;rio que for melhor para voc&ecirc;.',
+  },
+  {
+    q: 'Posso assistir s&oacute; uma aula ou preciso fazer o curso inteiro?',
+    a: 'Cada aula tem valor independente. Voc&ecirc; pode participar de quantas aulas quiser, ao ritmo que puder.',
+  },
+  {
+    q: 'O curso &eacute; ao vivo ou pr&eacute;-gravado?',
+    a: 'As aulas s&atilde;o ao vivo, pelo Google Meet, com intera&ccedil;&atilde;o e espa&ccedil;o para perguntas. A grava&ccedil;&atilde;o fica dispon&iacute;vel para quem n&atilde;o puder comparecer.',
+  },
+  {
+    q: 'Como recebo o link de acesso?',
+    a: 'Ap&oacute;s a inscri&ccedil;&atilde;o, voc&ecirc; &eacute; adicionado ao grupo do WhatsApp onde recebemos o link do Google Meet e todas as informa&ccedil;&otilde;es sobre o curso.',
+  },
+  {
+    q: 'O valor de R$ 10 &eacute; por aula ou pelo curso inteiro?',
+    a: 'O investimento &eacute; de R$ 10 por aula. Voc&ecirc; paga apenas pelas aulas que for assistir.',
+  },
+];
+---
+
+<section class="section section--alt" aria-labelledby="faq-heading">
+  <div class="container faq__inner">
+    <h2 id="faq-heading" class="faq__title">
+      Perguntas frequentes
+    </h2>
+    <div class="faq__list" role="list">
+      {faqs.map((faq, i) => (
+        <div class="faq-item" data-open={i === 0 ? 'true' : 'false'}>
+          <button
+            class="faq-trigger"
+            type="button"
+            aria-expanded={i === 0 ? 'true' : 'false'}
+          >
+            <span>{faq.q}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p class="faq-answer">{faq.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq-item');
+      if (!item) return;
+      const isOpen = item.getAttribute('data-open') === 'true';
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach((el) => {
+        el.setAttribute('data-open', 'false');
+        const btn = el.querySelector('.faq-trigger');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle clicked
+      if (!isOpen) {
+        item.setAttribute('data-open', 'true');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--section-gap);
+  }
+
+  .faq__title {
+    text-align: center;
+  }
+
+  .faq__list {
+    width: 100%;
+    max-width: 40rem;
+  }
+</style>

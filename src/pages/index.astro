@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Pain from '../components/Pain.astro';
+import Solution from '../components/Solution.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import EventDetails from '../components/EventDetails.astro';
+import Organizers from '../components/Organizers.astro';
+import FAQ from '../components/FAQ.astro';
+import CTAFinal from '../components/CTAFinal.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+import '../styles/global.css';
+---
+
+<Layout
+  title="Teologia nas Férias 2026 — Conhecendo o Mecanismo dos Dons Espirituais"
+  description="Curso online sobre dons espirituais em julho. Aulas ao vivo com gravação. R$ 10 por aula. Inscreva-se agora."
+>
+  <Header />
+  <main id="main-content">
+    <Hero />
+    <Pain />
+    <Solution />
+    <HowItWorks />
+    <EventDetails />
+    <Organizers />
+    <FAQ />
+    <CTAFinal />
+  </main>
+  <Footer />
+  <WhatsAppButton />
+</Layout>

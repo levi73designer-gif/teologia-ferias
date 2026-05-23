@@ -1,0 +1,123 @@
+---
+const benefits = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+    title: 'Entenda cada dom',
+    text: 'Saiba a diferença entre os dons e como cada um opera',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>`,
+    title: 'Aulas ao vivo',
+    text: 'Participe em tempo real e tire suas dúvidas',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    title: 'Gravação disponível',
+    text: 'Assista depois se não puder estar presente',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+    title: 'Valor acessível',
+    text: 'R$ 10 por aula, sem surpresas',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
+    title: 'Do estudo pra vida',
+    text: 'Conhecimento que você aplica na sua caminhada',
+  },
+];
+---
+
+<section class="section section--alt" aria-labelledby="solution-heading">
+  <div class="container solution__inner">
+    <div class="solution__header">
+      <h2 id="solution-heading" class="solution__title">
+        Um curso pra voc&ecirc; entender os dons &mdash; de verdade
+      </h2>
+      <p class="solution__intro">
+        Teologia nas F&eacute;rias &eacute; um curso online de quatro aulas sobre o mecanismo dos dons espirituais. Nada de teoria distante: voc&ecirc; vai aprender o que a B&iacute;blia ensina, de forma pr&aacute;tica e direta.
+      </p>
+    </div>
+    <ul class="solution__list" role="list">
+      {benefits.map((b) => (
+        <li class="solution__item">
+          <span class="solution__icon" set:html={b.icon} />
+          <div class="solution__text">
+            <h3 class="solution__item-title">{b.title}</h3>
+            <p class="solution__item-desc">{b.text}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .solution__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--section-gap);
+  }
+
+  .solution__header {
+    text-align: center;
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .solution__intro {
+    font-size: var(--font-size-body-lg);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+  }
+
+  .solution__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    width: 100%;
+    max-width: 40rem;
+  }
+
+  .solution__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .solution__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-size-2xl);
+    height: var(--icon-size-2xl);
+    background: var(--color-primary-50);
+    color: var(--color-primary-500);
+    border-radius: var(--radius-md);
+  }
+
+  .solution__icon :global(svg) {
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+  }
+
+  .solution__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .solution__item-title {
+    color: var(--color-text-primary);
+  }
+
+  .solution__item-desc {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-secondary);
+  }
+</style>

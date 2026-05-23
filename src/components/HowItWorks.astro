@@ -1,0 +1,116 @@
+---
+const steps = [
+  {
+    number: '1',
+    title: 'Inscreva-se',
+    text: 'Preencha o formulário com nome, e-mail e WhatsApp',
+  },
+  {
+    number: '2',
+    title: 'Receba o link',
+    text: 'Você entra no grupo do WhatsApp e recebe o link do Google Meet',
+  },
+  {
+    number: '3',
+    title: 'Assista ao vivo ou gravado',
+    text: 'Compareça às sextas-feiras ou assista quando puder',
+  },
+];
+---
+
+<section class="section" aria-labelledby="how-heading">
+  <div class="container how__inner">
+    <h2 id="how-heading" class="how__title">
+      Tr&ecirc;s passos at&eacute; as suas aulas
+    </h2>
+    <ol class="how__steps" role="list">
+      {steps.map((s) => (
+        <li class="how__step">
+          <span class="how__number">{s.number}</span>
+          <div class="how__text">
+            <h3 class="how__step-title">{s.title}</h3>
+            <p class="how__step-desc">{s.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <a href="#cta-final" class="btn btn--primary">
+      Quero come&ccedil;ar
+    </a>
+  </div>
+</section>
+
+<style>
+  .how__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--section-gap);
+  }
+
+  .how__title {
+    max-width: 28rem;
+  }
+
+  .how__steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    width: 100%;
+    max-width: 32rem;
+  }
+
+  .how__step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-5);
+    text-align: left;
+  }
+
+  .how__number {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-size-2xl);
+    height: var(--icon-size-2xl);
+    background: var(--color-accent-yellow-500);
+    color: var(--color-text-primary);
+    border-radius: var(--radius-full);
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-h3);
+    line-height: 1;
+  }
+
+  .how__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .how__step-title {
+    color: var(--color-text-primary);
+  }
+
+  .how__step-desc {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-secondary);
+  }
+
+  @media (min-width: 768px) {
+    .how__steps {
+      flex-direction: row;
+      max-width: var(--container-max);
+    }
+
+    .how__step {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+    }
+  }
+</style>

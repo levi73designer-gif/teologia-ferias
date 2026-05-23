@@ -1,0 +1,57 @@
+---
+import MulticolorBar from './MulticolorBar.astro';
+---
+
+<header class="header" role="banner">
+  <nav class="header__nav container" aria-label="Navegacao principal">
+    <div class="header__logos">
+      <img
+        src="/images/CED-SP-LOGO.png"
+        alt="Logo do Quadrangular CED-SP"
+        class="header__logo"
+        width="80"
+        height="80"
+        loading="eager"
+      />
+      <img
+        src="/images/SEEC-SP-LOGO.png"
+        alt="Logo da SEEC-SP"
+        class="header__logo"
+        width="80"
+        height="80"
+        loading="eager"
+      />
+    </div>
+  </nav>
+  <MulticolorBar />
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-nav);
+    background: var(--nav-bg);
+    border-bottom: var(--nav-border-bottom);
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--nav-height);
+    padding-inline: var(--nav-padding-x);
+  }
+
+  .header__logos {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .header__logo {
+    height: var(--nav-logo-height);
+    width: auto;
+    object-fit: contain;
+  }
+</style>

@@ -1,0 +1,115 @@
+---
+---
+
+<section class="section" aria-labelledby="organizers-heading">
+  <div class="container organizers__inner">
+    <h2 id="organizers-heading" class="organizers__title">
+      Quem organiza este curso
+    </h2>
+    <div class="organizers__content">
+      <div class="organizers__org">
+        <div class="organizers__logo-wrap">
+          <img
+            src="/images/CED-SP-LOGO.png"
+            alt="Logo do Quadrangular CED-SP"
+            class="organizers__logo"
+            width="80"
+            height="80"
+            loading="lazy"
+          />
+        </div>
+        <div class="organizers__text">
+          <h3 class="organizers__name">Quadrangular CED-SP</h3>
+          <p class="organizers__desc">
+            O Conselho Estadual de Diretores da Igreja Quadrangular no estado de S&atilde;o Paulo atua na forma&ccedil;&atilde;o e no desenvolvimento de l&iacute;deres, promovendo ensino b&iacute;blico de qualidade em todo o estado.
+          </p>
+        </div>
+      </div>
+      <div class="organizers__org">
+        <div class="organizers__logo-wrap">
+          <img
+            src="/images/SEEC-SP-LOGO.png"
+            alt="Logo da SEEC-SP"
+            class="organizers__logo"
+            width="80"
+            height="80"
+            loading="lazy"
+          />
+        </div>
+        <div class="organizers__text">
+          <h3 class="organizers__name">SEEC-SP</h3>
+          <p class="organizers__desc">
+            A Secretaria Estadual de Educa&ccedil;&atilde;o e Cultura da Igreja Quadrangular em S&atilde;o Paulo &eacute; respons&aacute;vel por programas educacionais e culturais que fortalecem a vida crist&atilde; e a forma&ccedil;&atilde;o teol&oacute;gica no estado.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .organizers__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--section-gap);
+  }
+
+  .organizers__title {
+    text-align: center;
+  }
+
+  .organizers__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    width: 100%;
+    max-width: 48rem;
+  }
+
+  .organizers__org {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  .organizers__logo-wrap {
+    flex-shrink: 0;
+  }
+
+  .organizers__logo {
+    width: 5rem;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .organizers__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .organizers__name {
+    color: var(--color-primary-500);
+  }
+
+  .organizers__desc {
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+  }
+
+  @media (min-width: 768px) {
+    .organizers__org {
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .organizers__logo {
+      width: 4rem;
+    }
+  }
+</style>
